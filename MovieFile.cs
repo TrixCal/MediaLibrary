@@ -50,11 +50,11 @@ namespace MediaLibrary
                         movie.title = line.Substring(0, idx);
                         //remove title and last comma from string
                         line = line.Substring(idx + 2);
-                        movie.genres = line.Split('|').ToList();
                         //Rest of details split by ','
                         string[] movieDetails = line.Split(',');
-                        movie.director = movieDetails[0];
-                        movie.runningTime = TimeSpan.Parse(movieDetails[1]);
+                        movie.genres = movieDetails[0].Split('|').ToList();
+                        movie.director = movieDetails[1];
+                        movie.runningTime = TimeSpan.Parse(movieDetails[2]);
                     }
                     Movies.Add(movie);
                 }
