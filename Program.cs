@@ -52,6 +52,12 @@ namespace MediaLibrary
                         {
                             movie.genres.Add("(no genres listed)");
                         }
+                        //request and input director
+                        Console.WriteLine("Enter director: ");
+                        movie.director = Console.ReadLine();
+                        //request and input running time
+                        Console.WriteLine("Enter running time (hh:mm:ss)");
+                        movie.runningTime = TimeSpan.Parse(Console.ReadLine());
                         //add movie
                         movieFile.AddMovie(movie);
                     }
