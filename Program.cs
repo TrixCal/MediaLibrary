@@ -13,6 +13,7 @@ namespace MediaLibrary
 
             string scrubbedFile = FileScrubber.ScrubMovies("movies.csv");
             logger.Info(scrubbedFile);
+            MovieFile movieFile = new MovieFile(scrubbedFile);
 
             logger.Info("Program Ended");
         }
