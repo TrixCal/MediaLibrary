@@ -24,4 +24,14 @@ namespace MediaLibrary{
             return $"Id: {mediaId}\nTitle: {title}\nDirector: {director}\nRun Time: {runningTime}\nGenres: {string.Join(", ", genres)}\n";
         }
     }
+    public class Album : Media
+    {
+        public string artist { get; set; }
+        public string recordLabel { get; set; }
+
+        public override string Display()
+        {
+            return $"Id: {mediaId}\nTitle: {title}\nArtist: {artist}\nLabel: {recordLabel}\nGenres: {string.Join(", ", genres)}\n";
+        }
+    }
 }
