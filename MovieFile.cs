@@ -110,5 +110,11 @@ namespace MediaLibrary
                 logger.Error(ex.Message);
             }
         }
+
+        public void DisplayMovies(){
+            foreach(Movie movie in Movies){
+                Console.WriteLine(movie.Display());
+            }
+        }
     }
 }
