@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using System.Linq;
 using NLog.Web;
 
 namespace MediaLibrary
@@ -21,6 +22,7 @@ namespace MediaLibrary
                 //menu
                 Console.WriteLine("1) Add Movie");
                 Console.WriteLine("2) Display All Movies");
+                Console.WriteLine("3) Search for Movie");
                 Console.WriteLine("Enter to quit");
                 choice = Console.ReadLine();
                 if(choice == "1"){
@@ -62,7 +64,20 @@ namespace MediaLibrary
                     //print out all movies
                     movieFile.DisplayMovies();
                 }
-            }while(choice == "1" | choice == "2");
+                else if(choice == "3"){
+                    //Search for movie
+                    Console.Write("Movie title: ");
+                    string title = Console.ReadLine();
+
+                    var movies = movieFile.Movies.Where(m => m.title.Contains(title));
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"There were {movies.Count()} movies by the title \"{title}\".\n");
+                    foreach(Movie m in movies){
+                        Console.WriteLine(m.Display());
+                    }
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+            }while(choice == "1" | choice == "2" | choice == "3");
 
             logger.Info("Program Ended");
         }
